@@ -1,0 +1,3 @@
+include ':bottomsheets'
+include ':app'
+rootProject.name = "SimpleDialogs"
