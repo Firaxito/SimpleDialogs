@@ -64,8 +64,8 @@ class SingleSelectDialogFragment private constructor() : BottomSheetDialogFragme
 
         fun title(title: String) = apply { this.title = title }
         fun options(options: List<String>) = apply { this.options = options }
-        fun selectedOptionIndex(optionIndex: Int) = apply { this.selectedOptionIndex = selectedOptionIndex }
-        fun onSelectedListener(listener: OnSelectedListener) = apply { this.onSelectedListener = onSelectedListener }
+        fun selectedOptionIndex(optionIndex: Int) = apply { this.selectedOptionIndex = optionIndex }
+        fun onSelectedListener(listener: OnSelectedListener) = apply { this.onSelectedListener = listener }
         fun itemHeight(heightInDp: Int) = apply { this.itemHeightDp = heightInDp.px }
 
         fun build() = SingleSelectDialogFragment().apply { setDataFromBuilder(this@Builder) }
