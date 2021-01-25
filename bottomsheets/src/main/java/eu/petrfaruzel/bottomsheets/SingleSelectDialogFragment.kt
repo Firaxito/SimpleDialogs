@@ -54,29 +54,24 @@ class SingleSelectDialogFragment private constructor() : BottomSheetDialogFragme
         this.itemHeight = builder.itemHeightDp
     }
 
+    class Builder {
+        internal var title: String = ""
+        internal var options: List<String> = listOf()
+        internal var selectedOptionIndex: Int = -1
+        internal var onSelectedListener: OnSelectedListener? = null
+        internal  var itemHeightDp: Int = 48.px
+
+
+        fun title(title: String) = apply { this.title = title }
+        fun options(options: List<String>) = apply { this.options = options }
+        fun selectedOptionIndex(optionIndex: Int) = apply { this.selectedOptionIndex = selectedOptionIndex }
+        fun onSelectedListener(listener: OnSelectedListener) = apply { this.onSelectedListener = onSelectedListener }
+        fun itemHeight(heightInDp: Int) = apply { this.itemHeightDp = heightInDp.px }
+
+        fun build() = SingleSelectDialogFragment().apply { setDataFromBuilder(this@Builder) }
+    }
+
     companion object {
-
-        class Builder {
-            var title: String = ""
-                private set
-            var options: List<String> = listOf()
-                private set
-            var selectedOptionIndex: Int = -1
-                private set
-            var onSelectedListener: OnSelectedListener? = null
-                private set
-            var itemHeightDp: Int = 48.px
-                private set
-
-
-            fun title(title: String) = apply { this.title = title }
-            fun options(options: List<String>) = apply { this.options = options }
-            fun selectedOptionIndex(optionIndex: Int) = apply { this.selectedOptionIndex = selectedOptionIndex }
-            fun onSelectedLister(listener: OnSelectedListener) = apply { this.onSelectedListener = onSelectedListener }
-            fun itemHeight(heightInDp: Int) = apply { this.itemHeightDp = heightInDp.px }
-
-            fun build() = SingleSelectDialogFragment().apply { setDataFromBuilder(this@Builder) }
-        }
 
         interface OnSelectedListener {
             fun onSelected(item: Pair<String, Int>)
